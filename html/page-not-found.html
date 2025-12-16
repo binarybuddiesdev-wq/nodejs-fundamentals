@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>404 | Page Not Found</title>
+</head>
+
+<body style="
+    margin:0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: radial-gradient(circle at top, #0ea5e9, #020617);
+    color:#ffffff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+">
+
+    <div style="
+        text-align:center;
+        padding:60px 50px;
+        background:rgba(2,6,23,0.8);
+        border-radius:20px;
+        box-shadow:0 30px 90px rgba(0,0,0,0.7);
+        backdrop-filter: blur(12px);
+        max-width:520px;
+        width:90%;
+    ">
+        <div style="
+            font-size:96px;
+            font-weight:900;
+            color:#38bdf8;
+            line-height:1;
+            margin-bottom:10px;
+        ">
+            404
+        </div>
+
+        <h1 style="
+            font-size:32px;
+            margin-bottom:12px;
+        ">
+            Page Not Found
+        </h1>
+
+        <p style="
+            font-size:18px;
+            color:#cbd5f5;
+            line-height:1.6;
+            margin-bottom:40px;
+        ">
+            The page you’re looking for doesn’t exist or was moved.
+        </p>
+
+        <button onclick="goHome()" style="
+                padding:14px 42px;
+                font-size:16px;
+                font-weight:700;
+                border:none;
+                border-radius:30px;
+                background:#38bdf8;
+                color:#020617;
+                cursor:pointer;
+                box-shadow:0 12px 35px rgba(56,189,248,0.45);
+            ">
+            Go to Home
+        </button>
+    </div>
+
+    <script>
+        function goHome() {
+            globalThis.location.href = "/home";
+        }
+    </script>
+
+</body>
+
+</html>

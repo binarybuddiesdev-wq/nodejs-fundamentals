@@ -1,0 +1,29 @@
+TRANSFORM STREAM
+
+-> a stream that reads the data, changes it and send the modified data chunk by chunk.
+
+
+Mental Model picture
+
+Input Stream
+   ↓
+[ TRANSFORM ]
+   ↓
+Output Stream
+
+
+-> unlike duplex where the read and write are independent but here the output depends on the input.
+
+
+use cases
+
+-> Compressing files (gzip)
+-> Encrypting / decrypting data
+-> Converting JSON → CSV
+-> Upper casing / sanitizing logs
+-> Streaming validation
+-> Modifying HTTP responses
+
+
+
+-> _flush() is called once, when the input stream has no more data, to let you handle any remaining incomplete data.

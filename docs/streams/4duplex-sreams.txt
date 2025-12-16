@@ -1,0 +1,41 @@
+DUPLEX STREAM
+
+
+-> a stream which is used for both read and write operations.
+
+
+
+use case
+
+-> TCP sockets (net.Socket)
+-> WebSockets
+-> SSH connections
+-> Database connections
+-> IPC channels
+
+Example:
+
+-> Client sends data
+-> Server responds back
+-> Both sides active at same time
+
+
+
+-> it has all readable events and writable events.
+
+
+
+
+Duplex Stream Mental Model
+
+
+
+        Readable side
+          ↑
+          │
+      ┌───────────┐
+      │  DUPLEX   │
+      └───────────┘
+          │
+          ↓
+        Writable side

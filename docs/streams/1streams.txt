@@ -1,0 +1,91 @@
+STREAM
+
+A Stream is a way to process data piece by piece instead of loading the entire data at once into memory.
+
+useCase EX:
+
+let's say we need to read a file which is of 2gb 
+
+in this case without streams
+
+node tries to load the entire file into the ram
+memory usage spikes
+the app may slow down or get crashed
+
+
+with streams
+
+file is read in small chunks
+each chunk is processed immediately
+memory usage is low
+fast and scalable
+
+
+overall the streams are about 
+
+performance
+memory efficiency
+handling large or continuous data.
+
+
+
+---> Streams let us start working with data before all of it is available.
+
+
+
+where are streams used
+
+
+1) File Handling
+
+-> read and write files.
+-> video/audio files.
+
+ex: downloading a file, uploading a file, copying files exc
+
+
+
+2) Network & HTTP
+
+-> Incoming HTTP Requests
+-> Sending responses chunk by chunk
+
+
+ex: 
+-> API receiving a large JSON body
+-> Sending a video file to the browser
+-> Live data (chat, notifications)
+
+req and res in Express are streams.
+
+
+
+
+3) Data processing
+
+-> Compressing files
+-> Encrypting/decrypting data
+-> Parsing CSV / JSON line by line
+
+
+ex: Read file → compress → save (without loading whole file)
+
+
+
+4) Real-time systems
+
+-> Video streaming
+-> Audio streaming
+-> Logs
+-> WebSockets
+
+
+
+
+
+They are 4 Different Types of Streams 
+
+1) Readable – data flows from a source to your app
+2) Writable – data flows from your app to a destination
+3) Duplex – data flows both ways (read + write)
+4) Transform – data is read, modified, then written

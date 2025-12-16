@@ -1,0 +1,183 @@
+Writable Stream
+
+
+-> A Stream Which is USed to write data chunk by chunk.
+
+use case
+
+-> Write data to a file
+-> Send HTTP responses
+-> Save uploaded files
+-> Write logs continuously
+-> Pipe data from another stream
+
+Examples:
+
+-> fs.createWriteStream()
+-> res in Express
+-> process.stdout
+
+
+
+Events
+
+
+
+1) finish
+
+
+-> it will be triggered/fired once all data has been written.
+-> it will be triggered/fired only once at the end.
+
+
+
+
+2) error
+
+
+-> it will be triggered/fired when an error has been encountered.
+
+ex: 
+-> disk full/memory full
+-> permission denied.
+-> pipe broken
+
+
+
+
+3) close
+
+
+-> it will be triggered/fired when stream is completely closed
+-> it can be triggered/fired after the finish or error event.
+
+
+
+
+4) drain
+
+
+-> it will be triggered/fired when internal buffer becomes empty after being full.
+
+
+
+
+
+
+
+
+
+METHODS
+
+
+
+1) .write(chunk)
+
+
+-> it helps us to write chunk at the destination
+
+ex: const canWriteMore = writable.write(chunk);
+
+it returns a boolean value
+
+true -> buffer not full, keep writing.
+false -> buffer full, stop writing.
+
+
+
+
+
+2) .end([chunk])
+
+
+-> writes optional last chunk.
+-> it gives a signal kind of thing that after this nothing will be written, this is the last one.
+
+
+
+
+3) .destroy(error?)
+
+
+-> if any error is encountered it immediately stops writing.
+-> used for abort or fatal errors.
+
+
+
+
+4) .setDefaultEncoding(encoding)
+
+
+
+-> this is an optional thing.
+-> it set's default encoding for writable streams.
+
+
+
+
+
+5) .cork() and .uncork()
+
+
+-> Temporarily buffer multiple writes
+-> Flush them together
+-> Used for performance optimization.
+
+
+
+
+
+
+
+
+Backpressure
+
+-> when data is written faster than the destination can handle,
+-> then the writable stream protects the memory by returning false from .write(chunk) and emits drain event when it's ready (memory is available).
+
+
+
+
+Backpressure flow
+
+write() → false
+   ↓
+wait for 'drain'
+   ↓
+write() again
+
+
+
+
+Simple mental model
+
+Your Code  ───▶  Writable Stream  ───▶  Destination
+                   ↑
+             backpressure control
+
+
+
+
+
+
+
+Full mental timeline for code written in writable-stream.ts
+
+
+write()
+ ↓
+buffer fills
+ ↓
+write() → false
+ ↓
+wait
+ ↓
+drain
+ ↓
+write()
+ ↓
+end()
+ ↓
+finish
+ ↓
+close
