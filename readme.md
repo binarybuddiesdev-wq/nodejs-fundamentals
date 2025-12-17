@@ -80,6 +80,38 @@ python generate_big_file.py
 
 ---
 
+## ▶️ Running TypeScript Files
+
+To run a TypeScript file directly using **tsx**, use the following command:
+
+```bash
+npx tsx fileName.ts
+```
+
+### Example:
+
+```bash
+npx tsx read-write-to-files-async.ts
+```
+
+---
+
+## ▶️ Watching File Changes (Dev Mode)
+
+If you want to continuously watch file changes and automatically re-run the file, use:
+
+```bash
+npm run dev
+```
+
+For this to work, add the following script in package.json:
+
+"scripts": {
+  "dev": "tsx watch fileName.ts"
+}
+
+---
+
 ## 🚨 Mandatory Rules
 
 - ❌ Do NOT change the folder structure
